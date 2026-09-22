@@ -1,6 +1,8 @@
 import { system, world, Player, BlockVolume } from '@minecraft/server';
 import { hidden_bias, hidden_weights, output_bias, output_weights } from './weights_and_bias';
 
+// The actual AI math is from the line 304. If that's what you are looking for.
+
 // All the weights and biases are... well in the weights and bias file. 
 // It's a simple 100 --> 48 ---> 26 Multi class classification neural network. I'd push the custom library I made to train it (yes it didn't use PyTorch or Tensorflow.)
 // I'd push my lib to GitHub soon though it's closed source for now.
