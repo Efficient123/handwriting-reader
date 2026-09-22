@@ -1,6 +1,12 @@
 import { system, world, Player, BlockVolume } from '@minecraft/server';
 import { hidden_bias, hidden_weights, output_bias, output_weights } from './weights_and_bias';
 
+// All the weights and biases are... well in the weights and bias file. 
+// It's a simple 100 --> 48 ---> 26 Multi class classification neural network. I'd push the custom library I made to train it (yes it didn't use PyTorch or Tensorflow.)
+// I'd push my lib to GitHub soon though it's closed source for now.
+
+
+// Usage instructions in the Readme.md.
 const GRID_COUNT = 10;
 const CELL_SIZE = 10;
 const SHEET_SIZE = GRID_COUNT * CELL_SIZE;
@@ -33,7 +39,6 @@ function sum(vec) {
 
     return final;
 }
-
 function softmax(vec) {
     const final = [];
     const max = Math.max(...vec);
@@ -72,7 +77,7 @@ function savePlayerSheet(player, sheet) {
 
         return true;
     } catch (error) {
-        console.warn(`Failed to save sheet for ${player.name}: ${error}`);
+        console.warn(`failed to save sheet for ${player.name} ${error}`);
         return false;
     }
 }
@@ -98,7 +103,7 @@ function loadPlayerSheet(player) {
 
         return sheet;
     } catch (error) {
-        console.warn(`Failed to load sheet for ${player.name}: ${error}`);
+        console.warn(`failed to load sheet for ${player.name}: ${error}`);
         return null;
     }
 }
@@ -108,7 +113,7 @@ function deletePlayerSheet(player) {
         player.setDynamicProperty(SHEET_PROPERTY, undefined);
         return true;
     } catch (error) {
-        console.warn(`Failed to delete sheet for ${player.name}: ${error}`);
+        console.warn(`failed to delete sheet for ${player.name}: ${error}`);
         return false;
     }
 }
@@ -293,7 +298,7 @@ function readGlyphVector(dim, topLeft, xGrid, yGrid) {
 
     return vector100;
 }
-
+// The actual AI math is here lol.
 function predictLetter(vector100) {
     const hidden_output = [];
 
@@ -573,7 +578,7 @@ function startReaderSession(player) {
 
     setActionBar(
         player,
-        "§eReading..."
+        "Reading..."
     );
 }
 
