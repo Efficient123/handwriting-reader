@@ -1,8 +1,8 @@
 {
     "format_version": 2,
     "header": {
-        "name": "Bedrock Add-ons",
-        "description": "Script API Template",
+        "name": "Handwriting Reader By Efficient123",
+        "description": "Adds an Add-on to read handwriting. For usage isntruction read the Github Readme.",
         "uuid": "8999df54-02ff-4a15-9073-40befd46d0de",
         "version": "1.0.0",
         "min_engine_version": [
